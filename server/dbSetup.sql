@@ -27,8 +27,51 @@ CREATE TABLE
     creator_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (creator_id) REFERENCES accounts (id) ON DELETE CASCADE
   );
-
 DROP TABLE cars;
+DROP TABLE houses;
+DROP TABLE accounts;
+
+  CREATE TABLE houses(
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ sqft INT NOT NULL,
+ bedrooms INT NOT NULL,
+ bathrooms DOUBLE NOT NULL,
+ imgUrl VARCHAR(255) NOT NULL,
+ description VARCHAR(255) NOT NULL,
+ price INT NOT NULL,
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
+creator_id VARCHAR(255) NOT NULL,
+FOREIGN KEY (creator_id) REFERENCES accounts (id) ON DELETE CASCADE
+);
+
+INSERT INTO 
+houses(
+sqft,
+bedrooms,
+bathrooms,
+imgUrl,
+description,
+price,
+creator_id
+)
+VALUES
+(
+  100,
+  1,
+  1,
+  "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "cool awesome house!",
+  15000,
+  "685320ea769bbf29d03dd468"
+
+)
+
+SELECT
+  *
+FROM
+  houses;
+
 
 INSERT INTO
   cars (
@@ -56,7 +99,7 @@ VALUES
     'avocado',
     100000,
     FALSE,
-    '65f87bc1e02f1ee243874743'
+    '685320ea769bbf29d03dd468'
   );
 
 SELECT
